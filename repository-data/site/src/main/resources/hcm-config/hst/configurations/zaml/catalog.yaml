@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hst:hst/hst:configurations/zaml/hst:catalog:
+      jcr:primaryType: hst:catalog
+      /zaml-catalog:
+        jcr:primaryType: hst:containeritempackage

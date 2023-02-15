@@ -1,0 +1,6 @@
+group: 
+  name: zaml
+  after: hippo-cms
+project: zaml
+module:
+  name: zaml-repository-data-site

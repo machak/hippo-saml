@@ -1,0 +1,5 @@
+definitions:
+  namespace:
+    zaml:
+      uri: http://www.zaml.com/zaml/nt/1.0
+      cnd: namespaces/zaml.cnd

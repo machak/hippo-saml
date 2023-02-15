@@ -1,0 +1,5 @@
+group: 
+  name: zaml
+project: zaml
+module:
+  name: zaml-repository-data-webfiles

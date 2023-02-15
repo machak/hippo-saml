@@ -1,0 +1,6 @@
+site: zaml
+group: zaml
+project: zaml
+module:
+  name: zaml-repository-data-site-development
+  after: zaml-repository-data-site
