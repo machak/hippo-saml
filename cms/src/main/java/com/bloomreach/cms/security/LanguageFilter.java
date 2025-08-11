@@ -79,7 +79,10 @@ public class LanguageFilter implements Filter {
             return false;
         }
         final Boolean attribute = (Boolean) session.getAttribute(LoginSuccessFilter.SET_TZ_LANG);
-        return attribute != null && attribute;
+        final boolean setLanguage = attribute != null && attribute;
+        // remove attribute
+        session.removeAttribute(LoginSuccessFilter.SET_TZ_LANG);
+        return setLanguage;
     }
 
     private Locale getLocale(final String value) {
