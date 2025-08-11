@@ -2,6 +2,7 @@ package com.bloomreach.cms.security;
 
 import org.hippoecm.frontend.model.UserCredentials;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -9,6 +10,7 @@ import java.io.Serializable;
  */
 class SSOUserState implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     static final String SAML_ID = SSOUserState.class.getName() + ".saml.id";

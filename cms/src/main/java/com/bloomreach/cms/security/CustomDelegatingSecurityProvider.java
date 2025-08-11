@@ -49,7 +49,7 @@ public class CustomDelegatingSecurityProvider extends DelegatingSecurityProvider
                     if (validateAuthentication(creds)) {
                         String userId = creds.getUserID();
                         if (!hasUser(userId)) {
-                            //user doesn't exist in the repositoru
+                            //user doesn't exist in the repository
                             syncUser(createUser(userId), getGroupManager().getGroup("admin"));
                         }
                         return true;

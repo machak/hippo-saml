@@ -1,22 +1,27 @@
 package com.bloomreach.cms.security;
 
+import jakarta.servlet.*;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.hippoecm.frontend.model.UserCredentials;
+import org.hippoecm.frontend.util.WebApplicationHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.jcr.SimpleCredentials;
-import jakarta.servlet.*;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class LoginSuccessFilter implements Filter {
 
     private static final Logger log = LoggerFactory.getLogger(LoginSuccessFilter.class);
 
+
+
     private static final String SSO_USER_STATE = SSOUserState.class.getName();
+    public static final String SET_TZ_LANG = "set_tz_lng";
 
     private static final ThreadLocal<SSOUserState> userStateHolder = new ThreadLocal<SSOUserState>();
 
@@ -37,7 +42,8 @@ public class LoginSuccessFilter implements Filter {
         }
 
         // Check if the user already has a SSO user state stored in HttpSession before.
-        HttpSession session = ((HttpServletRequest) request).getSession();
+        final HttpServletRequest servletRequest = (HttpServletRequest) request;
+        HttpSession session = servletRequest.getSession();
 
         SSOUserState userState = (SSOUserState) session.getAttribute(SSO_USER_STATE);
 
@@ -53,7 +59,8 @@ public class LoginSuccessFilter implements Filter {
                 credentials.setAttribute(SSOUserState.SAML_ID, username);
                 userState = new SSOUserState(new UserCredentials(credentials), session.getId());
                 session.setAttribute(SSO_USER_STATE, userState);
-
+                // set flag to set user timezone/language
+                session.setAttribute(SET_TZ_LANG, true);
 
             } catch (Exception e) {
                 log.debug("Error authenticating with SAML", e);

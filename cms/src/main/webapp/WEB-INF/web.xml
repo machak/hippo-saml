@@ -56,6 +56,10 @@
     <filter-name>HstFilter</filter-name>
     <filter-class>org.hippoecm.hst.container.HstFilter</filter-class>
   </filter>
+  <filter>
+    <filter-name>LanguageFilter</filter-name>
+    <filter-class>com.bloomreach.cms.security.LanguageFilter</filter-class>
+  </filter>
 
 
   <filter-mapping>
@@ -127,7 +131,10 @@
     <filter-name>CMS</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-
+  <filter-mapping>
+    <filter-name>LanguageFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <filter-mapping>
     <filter-name>Console</filter-name>
     <url-pattern>/console/*</url-pattern>
