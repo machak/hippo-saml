@@ -37,6 +37,7 @@ public class LanguageFilter implements Filter {
                 log.error("Error setting user language and timezone", e);
             }
         }
+        filterChain.doFilter(request, response);
     }
 
     private void setPreferences(HttpServletRequest servletRequest, PluginUserSession userSession) {
